@@ -1,6 +1,8 @@
 (function() {
-  'use strict';
 
+
+   // 2 == '2'
+   // 2 === '2'
   // ---------------------
   // Define a function max() that takes two numbers as arguments and returns the largest of them. Use the if-then-else construct available in Javascript.
   // ---------------------
@@ -13,7 +15,7 @@
       // put code here to run if num2 is greater than num1
       return num1;
     }
-  }
+  };
 
   // ---------------------
   // Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.
@@ -26,7 +28,7 @@ function maxOfThree(num1, num2, num3) {
   } else {
     return num3;
   }
-}
+};
 
 
   // ---------------------
@@ -46,42 +48,119 @@ function isVowel(char){
   } else {
     return false;
   }
-}
+};
 
   // ---------------------
   // Write a function rovarspraket() that will translate a text into "rövarspråket". That is, double every consonant and place an occurrence of "o" in between. For example, translate("this is fun") should return the string "tothohisos isos fofunon".
   // ---------------------
-function rovarspraket(){
 
+var consonant = "bcdfghjklmnpqrstvwxyz";
+  srt = "hieeelalaooo"
 
-}
+  function rovarspraket(str) {
+    var str  = str.split("")
+    var result_str = str.map(element => {
+      if(consonant.includes(element)) {
+        str = element + "o" + element
+        return str
+      } else {
+        return element
+      }
+    })
+    return result_str.join("")
+  }
 
 
   // ---------------------
   // Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in an array of numbers. For example, sum([1,2,3,4]) should return 10, and multiply([1,2,3,4]) should return 24.
   // ---------------------
-function sum([1,2,3,4]){
-  return 10;
-  multiply([1,2,3,4])
-  return 24;
+
+  var numbers = [1, 4, 5]
+
+  function sum(numbers) {
+    numbers.forEach((element, i) => {
+      if (i === 0){
+      result = element
+    } else {
+      result += element
+      }
+    })
+  return result
+}
+function multiply(numbers) {
+  var param
+  numbers.forEach((element, i) => {
+    if (i === 0){
+      param = element
+    }
+    else {
+      param *= element
+    }
+  })
+  return param
 }
 
 
   // ---------------------
   // Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
   // ---------------------
+var str = 'jag testar'
 
+
+function reverse(str) {
+if ('jag testar')
+  return str.split("").reverse().join("");
+
+}
 
 
   // ---------------------
   // Define a function findLongestWord() that takes an array of words and returns the length of the longest one.
   // ---------------------
+var str = ['hello', 'world', 'does', 'anyone', 'knows', 'what', 'time', 'is', 'it']
 
+function findLongestWord(arr) {
+  let length = 0;
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i].length > length) {
+        length = arr[i].length;
+    }
+   }
+
+   return length;
+}
 
 
   // ---------------------
   // Define a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.
   // ---------------------
+
+  var filterLongWords = function(array, int){
+    var length = array.length;
+    var longestWords = [];
+    for (i = 0; i < length; i++) {
+      if (array[i].length > int) {
+        longestWords[longestWords.length] = array[i];
+      }
+    }
+    return longestWords;
+  }
+
+
+
+
+
+// var str = ['hello', 'world', 'does', 'anyone', 'knows', 'what', 'time', 'is', 'it']
+//
+// function filterLongWords(arr){
+//   let length = 0;
+//   for(let i = 0; i < arr.length; i--) {
+//     if(arr[i].length > length) {
+//         length = arr[i].length;
+//     }
+//   }
+//   return length;
+// }
 
 
 
@@ -89,6 +168,32 @@ function sum([1,2,3,4]){
   // Define a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
   // ---------------------
 
+var charFreq = function(string) {
+  var list = {};
+  var length = string.length;
+  for (var i = 0; i < length; i++) {
+    if (string.charAt(i) in list)
+      list[string.charAt(i)] += +1;
+      else
+      list[string.charAt(i)] = 1;
+  }
+  return list;
+}
+
+
+
+
+  // var charFreq = function(string){
+  //   var list = {};
+  //   var length = string.length;
+  //   for (var i = 0; i < length; i++) {
+  //   if (string.charAt(i) in list)
+  //     list[string.charAt(i)] += +1;
+  //   else
+  //     list[string.charAt(i)] = 1;
+  //   }
+  //   return list;
+  // }
 
   ////////////////////////////////////////////////////////////////////////
   /////////////////////////DO NOT CHANGE CODE BELOW///////////////////////
@@ -125,4 +230,4 @@ function sum([1,2,3,4]){
   console.assert(charFreq('abbabcbdbabdbdbabababcbcbab').c === 3);
 
   console.assert(charFreq('abbabcbdbabdbdbabababcbcbab').d === 3);
-})();
+  })();
